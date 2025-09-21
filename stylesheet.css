@@ -84,6 +84,26 @@ a {
   font-size: 14px
 }
 
+/* Style for bracketed links with spacing */
+.bracketed-links a {
+  position: relative;
+  text-decoration: none;
+  color: #1772d0; /* keep your link color */
+  padding: 0 8px; /* space between links */
+}
+
+.bracketed-links a::before {
+  content: "[";
+}
+
+.bracketed-links a::after {
+  content: "]";
+}
+
+.bracketed-links a:hover {
+  color: #f09228; /* keep your hover color */
+}
+
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
