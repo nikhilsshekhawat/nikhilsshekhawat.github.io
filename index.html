@@ -1,132 +1,652 @@
-<!DOCTYPE HTML>
-<link rel="shortcut icon" type="image/png" href="./images/MLogo.png" />
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title>Nikhil Shekhawat</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdfcfa;
+            --bg-secondary: #f7f5f0;
+            --text-primary: #1c2331;
+            --text-secondary: #4d5566;
+            --accent: #2c4a7c;
+            --accent-hover: #1e3a5f;
+            --accent-secondary: #8b4513;
+            --border: #e0ddd5;
+            --shadow: rgba(28, 35, 49, 0.06);
+            --gold: #b8860b;
+        }
 
-  <meta name="author" content="Sriram Mandalika">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            font-weight: 400;
+            font-size: 17px;
+        }
+
+        /* Subtle grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        header {
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid white;
+            box-shadow: 0 8px 32px var(--shadow);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .profile-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 20px var(--shadow);
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .profile-placeholder span {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 3rem;
+            color: white;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.75rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .email {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-links a::before {
+            content: '[';
+            opacity: 0.7;
+        }
+
+        .social-links a::after {
+            content: ']';
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.6rem;
+            position: relative;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        h2::after {
+            display: none;
+        }
+
+        h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        h3 a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        h3 a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .inline-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .inline-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* Publication/Project Cards */
+        .card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            margin: 0 -1.5rem;
+            border-radius: 12px;
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: linear-gradient(135deg, rgba(196, 120, 95, 0.04) 0%, rgba(212, 165, 116, 0.04) 100%);
+            transform: translateX(4px);
+        }
+
+        .card-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #fff 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-placeholder {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta .authors {
+            font-style: normal;
+        }
+
+        .card-meta .venue {
+            font-style: italic;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .card-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .card-links a::before {
+            content: '[';
+            opacity: 0.7;
+        }
+
+        .card-links a::after {
+            content: ']';
+            opacity: 0.7;
+        }
+
+        .card-links a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Organization Cards */
+        .org-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .org-card:last-child {
+            border-bottom: none;
+        }
+
+        .org-logo {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-secondary) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 1px solid var(--border);
+        }
+
+        .org-logo img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .org-logo svg path,
+        .org-logo svg circle,
+        .org-logo svg rect {
+            stroke: var(--accent) !important;
+        }
+
+        .org-content {
+            flex: 1;
+        }
+
+        .org-content h3 {
+            margin-bottom: 0.2rem;
+        }
+
+        .org-role {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .org-content p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Side Projects - Simple List */
+        .project-item {
+            padding: 1.25rem 1.5rem;
+            margin: 0 -1.5rem;
+            border-radius: 10px;
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(196, 120, 95, 0.04);
+        }
+
+        .project-item h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .project-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .card-image {
+                width: 100%;
+                height: 150px;
+            }
+
+            .org-card {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .org-logo {
+                margin: 0 auto;
+            }
+
+            .profile-image,
+            .profile-placeholder {
+                width: 140px;
+                height: 140px;
+            }
+
+            .profile-placeholder span {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Nikhil Shekhawat</name>
-              </p>
-              <p>
-                I am a graduate student at <a href="https://www.northeastern.edu/">Northeastern University</a> in Boston, where I am doing Master's in Artificial Intelligence at <a href="https://www.khoury.northeastern.edu/">Khoury college of computer sciences</a>.
-                Also, worked as SDE Intern at State Bank of India and Grasim Industries Ltd</a> .
-                I did my Bachelors in Computer Science at SRMIST, where I was advised by <a href="https://www.srmist.edu.in/faculty/dr-s-a-angayarkanni/">Dr Angayarkanni S</a>,
-                also received <a href="data/Award.pdf">Top performer Award </a>for the cohort.
-                            </p>
-                            <p style="text-align:center">
-                              <a href="mailto:nikhilsinghshekhawat2003@gmail.com">Email</a> &nbsp;/&nbsp;
-                              <a href="https://www.linkedin.com/in/nikhil-singh-shekhawat-1a8389216/">LinkedIn</a> &nbsp;/&nbsp;
-                              <a href="data/Nikhil_Bio.txt">Bio</a> &nbsp;/&nbsp;
-                              <a href="data/news_articles.pdf">News Article</a> &nbsp;&nbsp;
-                            </p>
-            </td>
-            <td style="padding:2.5%; width:35%; max-width:35%;">
-              <a href="./images/NikhilSingh.jpg">
-                <img 
-                  src="./images/NikhilSingh.jpg" 
-                  alt="profile photo" 
-                  class="hoverZoomLink"
-                  style="
-                    width:100%; 
-                    max-width:100%; 
-                    border-radius: 50%; 
-                    object-fit: cover;
-                    aspect-ratio: 1 / 1;
-                  "
-                >
-              </a>
-            </td>
+    <header>
+        <div class="container">
+            <img src="/images/NikhilSingh.jpg" alt="Your Name" class="profile-image">
             
+            <h1>Nikhil Shekhawat</h1>
+            <p class="email">shekhawat dot n at northeastern dot edu</p>
             
-            </td>
-          </tr>
-        </tbody></table>
+            <div class="social-links">
+                <a href="https://github.com/nikhilsshekhawat">GitHub</a>
+                <a href="mailto:shekhawat.n@northeastern.edu.com">Email</a>
+                <a href="https://www.linkedin.com/in/nikhilsshekhawat/">LinkedIn</a>
+                <a href="/data/news_articles.pdf">Newspaper feature</a>
+            </div>
+        </div>
+    </header>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading> Research </heading>
-              <p>
-              My research interests span the fields of computer vision, deep learning, and NLP, with a strong focus on data-efficient learning strategies such as semi-supervised, unsupervised, and self-supervised approaches. I am particularly interested in designing intelligent systems and agents that can autonomously perceive, explore, and interact with their environments by using raw data and self-driven learning signals.
-              </p>
-               <p style="text-align:center">
-               <a href="https://ieeexplore.ieee.org/author/919802638816785">IEEE</a> &nbsp &nbsp
-           </p>
-            </td>
-          </tr>
-        </tbody></table>
+    <main class="container">
+        <!-- About Section -->
+        <section class="animate-on-scroll">
+            <h2>About</h2>
+            <p>
+                I am a Master's student in Artificial Intelligence at <span class="highlight">Northeastern University, Boston</span>.
+            </p>
+            <p>
+                My research interests revolve data-efficient learning strategies, intelligent systems and agents, and self-driven learning signals. 
+            </p>
+            <p>
+                Previously, I worked as a <span class="highlight">Undergraduate Researcher</span> at SRMIST, Chennai 
+                on Dynamic MAC Protocols for Underwater acoustic sensors. 
+            </p>
+            <p>
+                I have previously Interned at <span class="highlight">State Bank of India</span> 
+                and <span class="highlight">Aditya Birla Group</span> 
+                on Conversational AI for personalized banking assistance and smart supply chain management.
+            </p>
+        </section>
+
+        <!-- Highlights Section -->
+<section class="animate-on-scroll">
+    <h2>Highlights</h2>
+    <ul class="highlights-list">
+        <li>Received <a href="/data/Award.pdf" class="inline-link">Top Performer Award</a> for Batch of 2021-25, SRMIST</li>
+        <li>Won the <a href="/data/TAC_Challenge.pdf" class="inline-link">Tenacity Award</a> at <a href="https://tacchallenge.com/" class="inline-link">TAC Challenge</a>, an international subsea drone competition at Norway</li>
+        <li>Project Lead at SRMAUV, overseeing industry-level tasks such as subsea docking, pipeline inspection, and valve intervention (2023-25)</li>
+        <li>Previous student research collaborator at <a href="https://www.srmdei.com/" class="inline-link">The Directorate of Entrepreneurship and Innovation</a> at SRMIST, for <a href="/images/MDP.jpeg" class="inline-link">AI-Driven Debris Cleaning System</a>, backed by DRDO and NIOT, with funding support of INR 9,00,000 from <a href="https://www.srmist.edu.in/research/innovation-incubation/" class="inline-link">The SRM Innovation, Incubation, and Entrepreneurship Centre</a>.</li>
+    </ul>
+</section>
+
+        <!-- Publications Section -->
+        <section class="animate-on-scroll">
+            <h2>Publications</h2>
+            
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/DMP.png" alt="Publication image">
+                </div>
+                <div class="card-content">
+                    <h3>Dynamic MAC Protocol for Layered Data Aggregation in Underwater Wireless Sensor Networks</h3>
+                    <div class="card-meta">
+                        <span class="authors"><u>Nikhil Shekhawat</u>, Balakiruthiga B, Angayarkanni SA, Nikhil Bathija, Shubh Shrimali, Neeharika Gupta</span><br>
+                        <span class="venue">IEEE/Second International Conference on Intelligent Cyber Physical Systems and Internet of Things 2024</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://ieeexplore.ieee.org/document/10696251">IEEE Xplore</a>
+                        <a href="/data/Dynamic MAC Protocol for Layered Data Aggregation in Underwater Wireless Sensor Networks.pdf">Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/ADS.png" alt="Publication image">
+                </div>
+                <div class="card-content">
+                    <h3>AI-Driven Safety: Automated Helmet Detection and License Plate Recognition</h3>
+                    <div class="card-meta">
+                        <span class="authors"><u>Nikhil Shekhawat</u>, Angayarkanni SA, Saketh S, Rajaram V, Balakiruthiga B </span><br>
+                        <span class="venue">IEEE/9th International Conference on Communication and Electronics Systems 2024</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10859938">IEEE Xplore</a>
+                        <a href="/data/AI Driven Safety - Research Paper.pdf">Paper</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organizations Section -->
+        <section class="animate-on-scroll">
+            <h2>Organizations</h2>
+            
+
+                <div class="org-card">
+                <div class="org-logo">
+                    <img src="/images/srmauv_logo.png" alt="Organization Logo">
+                </div>
+                <div class="org-content">
+                    <h3>SRM Autonomous Underwater Vehicle Team</h3>
+                    <p class="org-role">System Developer (April'23- May'25)</p>
+                    <p>Software Developer for system controls, path planning and object manipulation. Mentored new recruits to the software domain of the team.</p>
+                    <div class="card-links">
+                        <a href="https://teamsrmauv.org/">Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         
+        <!-- Side Projects Section -->
+        <section class="animate-on-scroll">
+            <h2>Projects</h2>
+            
+            <div class="project-item">
+                <h3><a href="#">VersionIO  [PyPi Package]</a></h3>
+                <p>A zero-dependency Python package to prevent accidental overwrites in production. Published on PyPI and GitHub.</p>
+                <div class="card-links">
+                    <a href="https://pypi.org/project/versionio/0.1.0/">PyPI.org</a>
+                </div>
+            </div>
 
+            <div class="project-item">
+                <h3><a href="#">RAG Based Code Vulnerability Analyzer</a></h3>
+                <p>Accelerated code auditing while ensuring code confidentiality via Edge LLM inference.</p>
+                <div class="card-links">
+                    <a href="https://github.com/nikhilsshekhawat/RAG-based-Code-Vulnerability-Analyzer">GitHub</a>
+                </div>
+            </div>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Highlights</heading>
-              <ul>
-		 <li> Received <a href="data/Award.pdf">Top Performer Award</a> for Batch of 2021-25, SRMIST</li>     
-	
-                 <li> Won the <a href="data/TAC_Challenge.pdf">Tenacity Award</a> at <a href="https://tacchallenge.com/">TAC Challenge</a>, an international subsea drone competition at Norway <br>
-                 <li> Project Lead at SRMAUV, overseeing industry-level tasks such as subsea docking, pipeline inspection, and
-                  valve intervention (2023-25)<br> 
-                 <li> Previous student research collaborator at <a href="https://www.srmdei.com/"> The Directorate of Entrepreneurship and Innovation</a> at SRMIST, for <a href="images/MDP.jpeg">AI-Driven Debris Cleaning System</a>, backed by <a href="https://www.drdo.gov.in/drdo/"> DRDO</a> and <a href="https://www.niot.res.in/"> NIOT</a>, with funding support of INR 9,00,000 from <a href="https://www.srmist.edu.in/research/innovation-incubation/"> The SRM Innovation, Incubation, and Entrepreneurship Centre.</a> <br>                  
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
+            <div class="project-item">
+                <h3><a href="#">Fusion Based Vision Simulation for Robotic Arm</a></h3>
+                <p>Achieved accurate depth reconstruction up to 10 meters underwater and Integrated signal processing, kinematic modeling in a 6-DOF underwater robotic arm with sub-centimeter accuracy.</p>
+                <div class="card-links">
+                    <a href="https://github.com/nikhilsshekhawat/Fusion-based-vision-simulation">GitHub</a>
+                </div>
+            </div>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Publications</heading>
-            </td>
-          </tr>
-        </tbody></table>
+            <div class="project-item">
+                <h3><a href="#">Neural-Semantic Translation of Natural Language to SQL Expressions</a></h3>
+                <p>Natural language to SQL translation system allowing users to query relational databases through conversational text.</p>
+                <div class="card-links">
+                    <a href="https://github.com/nikhilsshekhawat/Semantic-AI-for-generating-sql-expressions">GitHub</a>
+                </div>
+            </div>
 
-		  
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-           <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="./images/DMP.png" width="160" height="100">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="data/Dynamic MAC Protocol for Layered Data Aggregation in Underwater Wireless Sensor Networks.pdf">
-                <papertitle>Dynamic MAC Protocol for Layered Data Aggregation in Underwater Wireless Sensor Networks</papertitle>
-              </a>
-              <br>
-              <em>IEEE/Second International Conference on Intelligent Cyber Physical Systems and Internet of Things (<strong>ICoICI</strong>)</em>, 2024 <br>
-               <p> Developed a smart MAC protocol for underwater sensor networks using TDMA and multichannel strategies, boosting data flow and reducing collisions. Combined PSO, ACO, fuzzy logic, and GWO to improve routing, energy use, and communication efficiency in crowded, layered network environments.
-               </p>
-              </td>
-          </tr> </tbody></table>
+            <div class="project-item">
+                <h3><a href="#">Multi-dextrous underwater robotic ARM</a></h3>
+                <p>ARM designed for industry-level tasks like valve intervention, subsea docking and pipeline inspection.</p>
+                <div class="card-links">
+                    <a href="https://github.com/nikhilsshekhawat/AquaPerceptron">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-		  
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-           <tr onmouseout="nlt_stop()" onmouseover="nlt_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="./images/ADS.png" width="160" height="100">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="data/AI - Driven Safety.pdf">
-                <papertitle>AI-Driven Safety: Automated Helmet Detection and License Plate Recognition</papertitle>
-              </a>
-              <br>
-              <em>IEEE/9th International Conference on Communication and Electronics Systems (<strong>ICCES</strong>)</em>, 2024 <br>
-               <p> Built traffic monitoring system for real-time helmet and license plate detection, achieving 93.7% accuracy. Combined CNNs and EasyOCR to maintain high performance in challenging conditions, with a mAP50 of 95.8% and robust recognition across varied environments. </p>
-              </td>
-          </tr> </tbody></table>
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
 
+        // Add staggered animation delays
+        document.querySelectorAll('section.animate-on-scroll').forEach((section, index) => {
+            section.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>
