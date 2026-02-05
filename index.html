@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikhil Shekhawat</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #d4d4d8;
+        background: linear-gradient(to bottom, #0a0a0f 0%, #12121a 100%);
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Animated Background Grid */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          linear-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+        z-index: 0;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+      }
+
+      /* Floating particles */
+      body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(circle at 20% 30%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(196, 181, 253, 0.06) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+        animation: float 15s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+
+      body > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.6); }
+      }
+
+      /* Navigation */
+      nav {
+        background: rgba(20, 20, 30, 0.7);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 30px rgba(139, 92, 246, 0.15);
+        border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+      }
+
+      nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav h1 {
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: #d4d4d8;
+        text-decoration: none;
+        transition: all 0.3s;
+        position: relative;
+        padding: 0.5rem 0;
+        font-weight: 500;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #a78bfa, #c4b5fd);
+        transition: width 0.3s;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      nav a:hover {
+        color: #a78bfa;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        color: white;
+        padding: 8rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 30% 50%, rgba(167, 139, 250, 0.12) 0%, transparent 50%),
+          radial-gradient(circle at 70% 50%, rgba(196, 181, 253, 0.12) 0%, transparent 50%);
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out;
+        background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out 0.3s backwards;
+      }
+
+      .social-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        background: rgba(167, 139, 250, 0.15);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(167, 139, 250, 0.3);
+        border-radius: 50px;
+        color: #e9d5ff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        font-size: 1rem;
+      }
+
+      .social-btn:hover {
+        background: rgba(167, 139, 250, 0.25);
+        border-color: #a78bfa;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+        color: #ffffff;
+      }
+
+      .social-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Sections */
+      section {
+        padding: 4rem 2rem;
+        background: rgba(20, 20, 28, 0.5);
+        backdrop-filter: blur(10px);
+        margin: 2rem auto;
+        max-width: 1200px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(167, 139, 250, 0.08);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      section:nth-child(even) {
+        animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      }
+
+      section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        border-bottom: 3px solid transparent;
+        border-image: linear-gradient(90deg, #a78bfa, #c4b5fd) 1;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .profile-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto;
+        box-shadow: 0 10px 40px rgba(167, 139, 250, 0.4);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeIn 1s ease-out, glow 3s ease-in-out infinite;
+        border: 4px solid transparent;
+        background: linear-gradient(#14141c, #14141c) padding-box,
+                    linear-gradient(135deg, #a78bfa, #c4b5fd) border-box;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.08) rotate(2deg);
+        box-shadow: 0 15px 60px rgba(167, 139, 250, 0.6);
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #d4d4d8;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .about-text p:nth-child(1) { opacity: 0; }
+      .about-text p:nth-child(2) {
+        animation-delay: 0.2s;
+        opacity: 0;
+      }
+      .about-text p:nth-child(3) {
+        animation-delay: 0.4s;
+        opacity: 0;
+      }
+
+      /* Experience */
+      .experience-item {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(30, 27, 45, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border-left: 4px solid #a78bfa;
+        transition: all 0.3s;
+        opacity: 0;
+        animation: slideInLeft 0.6s ease-out forwards;
+        border: 1px solid rgba(167, 139, 250, 0.1);
+      }
+
+      .experience-item:nth-child(2) { animation-delay: 0.2s; }
+      .experience-item:nth-child(3) { animation-delay: 0.4s; }
+      .experience-item:nth-child(4) { animation-delay: 0.6s; }
+
+      .experience-item:hover {
+        transform: translateX(15px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(167, 139, 250, 0.3);
+        background: rgba(35, 32, 50, 0.6);
+        border-left-color: #c4b5fd;
+      }
+
+      .experience-item h3 {
+        color: #a78bfa;
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .experience-item .role {
+        color: #e9d5ff;
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+      }
+
+      .experience-item .duration {
+        color: #a1a1aa;
+        font-style: italic;
+      }
+
+      /* Education */
+      .education-item {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(30, 27, 45, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border-left: 4px solid #c4b5fd;
+        transition: all 0.3s;
+        opacity: 0;
+        animation: slideInRight 0.6s ease-out forwards;
+        border: 1px solid rgba(196, 181, 253, 0.1);
+      }
+
+      .education-item:nth-child(2) { animation-delay: 0.2s; }
+
+      .education-item:hover {
+        transform: translateX(-15px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(196, 181, 253, 0.3);
+        background: rgba(35, 32, 50, 0.6);
+        border-left-color: #a78bfa;
+      }
+
+      .education-item h3 {
+        color: #c4b5fd;
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .education-item .course {
+        color: #e9d5ff;
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+      }
+
+      .education-item .duration {
+        color: #a1a1aa;
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .education-item .coursework {
+        color: #d4d4d8;
+        line-height: 1.6;
+      }
+
+      .education-item .coursework strong {
+        background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Highlights */
+      .highlights-list {
+        margin-top: 2rem;
+        margin-left: 2rem;
+      }
+
+      .highlights-list li {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #d4d4d8;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+        transition: all 0.3s;
+        padding-left: 1rem;
+        border-left: 3px solid transparent;
+      }
+
+      .highlights-list li:nth-child(1) { animation-delay: 0.1s; }
+      .highlights-list li:nth-child(2) { animation-delay: 0.2s; }
+      .highlights-list li:nth-child(3) { animation-delay: 0.3s; }
+      .highlights-list li:nth-child(4) { animation-delay: 0.4s; }
+
+      .highlights-list li:hover {
+        color: #a78bfa;
+        transform: translateX(15px);
+        border-left-color: #a78bfa;
+      }
+
+      /* Publications */
+      .publication-item {
+        background: rgba(30, 27, 45, 0.4);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid #a78bfa;
+        transition: all 0.3s;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+        border: 1px solid rgba(167, 139, 250, 0.1);
+      }
+
+      .publication-item:nth-child(2) { animation-delay: 0.2s; }
+      .publication-item:nth-child(3) { animation-delay: 0.4s; }
+
+      .publication-item:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 12px 40px rgba(167, 139, 250, 0.3);
+        background: rgba(35, 32, 50, 0.6);
+        border-left-color: #c4b5fd;
+      }
+
+      .publication-item h3 {
+        color: #e9d5ff;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .publication-item .authors {
+        color: #a1a1aa;
+        font-style: italic;
+        margin-bottom: 0.5rem;
+      }
+
+      .publication-item .venue {
+        background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: bold;
+      }
+
+      .publication-item p {
+        color: #d4d4d8;
+        margin-top: 0.5rem;
+        line-height: 1.6;
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: rgba(30, 27, 45, 0.4);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(167, 139, 250, 0.12);
+        border-radius: 15px;
+        padding: 2rem;
+        transition: all 0.4s;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(196, 181, 253, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-card:nth-child(1) { animation-delay: 0.1s; }
+      .project-card:nth-child(2) { animation-delay: 0.2s; }
+      .project-card:nth-child(3) { animation-delay: 0.3s; }
+      .project-card:nth-child(4) { animation-delay: 0.4s; }
+      .project-card:nth-child(5) { animation-delay: 0.5s; }
+      .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+      .project-card:hover {
+        border-color: #a78bfa;
+        box-shadow: 0 15px 50px rgba(167, 139, 250, 0.4);
+        transform: translateY(-15px) scale(1.03);
+        background: rgba(35, 32, 50, 0.6);
+      }
+
+      .project-card h3 {
+        background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-card:hover h3 {
+        transform: translateX(5px);
+      }
+
+      .video-demo {
+        margin: 1rem 0 0 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s;
+        position: relative;
+        z-index: 1;
+        border: 2px solid rgba(167, 139, 250, 0.2);
+      }
+
+      .video-demo:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 30px rgba(167, 139, 250, 0.4);
+      }
+
+      .video-demo iframe {
+        width: 100%;
+        height: 220px;
+        border: none;
+        border-radius: 8px;
+        display: block;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        color: #a1a1aa;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(167, 139, 250, 0.15);
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .social-links {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        section h2 {
+          font-size: 2rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <h1>Nikhil Shekhawat</h1>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#highlights">Highlights</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h2>Hi, I'm Nikhil</h2>
+      <div class="social-links">
+        <a href="mailto:nikhilsinghshekhawat2003@gmail.com" class="social-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Mail
+        </a>
+        <a href="https://linkedin.com/in/nikhilsshekhawat" target="_blank" class="social-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/nikhilsshekhawat" target="_blank" class="social-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img src="images/NikhilSingh.jpg" alt="Nikhil" class="profile-image">
+        <div class="about-text">
+          <p>
+            I am a Master's student in Artificial Intelligence at Northeastern University in Boston with a strong foundation in algorithms, data structures, and intelligent systems. My work sits at the intersection of software engineering and machine learning, where I enjoy building systems that are both technically sound and practically impactful.
+          </p>
+          <p>
+            I have industry experience as Software Engineering Intern at Aditya Birla Group and Machine Learning Intern at Lanxess, where I worked with CI/CD workflows to ship reliable, production-ready systems.
+          </p>
+          <p>
+            Previously, as an Undergraduate Research Assistant at SRMIST, I contributed to research on Dynamic MAC protocol for underwater acoustic sensor networks, intelligent agents, and self-driven learning signals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="experience-item">
+        <h3>Aditya Birla Group</h3>
+        <div class="role">Software Engineering Intern</div>
+        <div class="duration">Nov 2024 - July 2025</div>
+      </div>
+
+      <div class="experience-item">
+        <h3>Lanxess</h3>
+        <div class="role">Machine Learning Intern</div>
+        <div class="duration">April 2024 - Sept 2024</div>
+      </div>
+
+      <div class="experience-item">
+        <h3>Aditya Birla Group</h3>
+        <div class="role">Project Intern</div>
+        <div class="duration">March 2023 - Sept 2023</div>
+      </div>
+
+      <div class="experience-item">
+        <h3>SRM University</h3>
+        <div class="role">Undergraduate Research Assistant</div>
+        <div class="duration">April 2022 - Nov 2022</div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="education-item">
+        <h3>Northeastern University</h3>
+        <div class="course">Master of Science in Artificial Intelligence</div>
+        <div class="duration">Sep 2025 - May 2027</div>
+        <div class="coursework">
+          <strong>Relevant Coursework:</strong> Applied Programming, Artificial
+          Intelligence, Algorithms, Linear Algebra and Probability
+        </div>
+      </div>
+
+      <div class="education-item">
+        <h3>SRM University</h3>
+        <div class="course">Bachelor of Technology in Computer Science</div>
+        <div class="duration">Aug 2021 - May 2025</div>
+        <div class="coursework">
+          <strong>Relevant Coursework:</strong> Software Engineering, Database
+          Management System, Design and Analysis of Algorithms
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Code Vulnerability Analyzer</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1A8Y4I5Y79IJmkBo-Ag5MA4-SwRXbyfFM/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Bluebikes - Smart Rebalancing System</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1rJ2VkBss9Vkt3wHTaC5Vt7Fa-TT2cLEv/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>F1 Strategy Center</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1eOkH9gQg7rHOltRL6JEcckIZJPmlRemI/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Deep Q-learning PacMan Agent</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1jm0Whaagi8ctI5A-LiTTXwdB1_JWpZ1e/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Fusion Based Vision Simulation</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1s-R2g2rqXJAcze-ejdqxbgIRZT__TUJS/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Castle Escape MDP Agent</h3>
+                <div class="video-demo">
+                    <iframe src="https://drive.google.com/file/d/1fYmVOsdSUbjdMs0HMD3WGE8LwMkUu696/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights">
+      <h2>Highlights</h2>
+      <ul class="highlights-list">
+        <li>Received Top Performer Award for Batch of 2021-25, SRMIST</li>
+        <li>
+          Won the Tenacity Award at TAC Challenge, an international subsea drone
+          competition at Norway
+        </li>
+        <li>
+          Project Lead at SRMAUV, overseeing industry-level tasks such as subsea
+          docking, pipeline inspection, and valve intervention (2023-25)
+        </li>
+        <li>
+          Previous student research collaborator at The Directorate of
+          Entrepreneurship and Innovation at SRMIST, for AI-Driven Debris
+          Cleaning System, backed by DRDO and NIOT, with funding support of INR
+          9,00,000 from The SRM Innovation, Incubation, and Entrepreneurship
+          Centre.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="publication-item">
+        <h3>
+          Dynamic MAC Protocol for Layered Data Aggregation in Underwater
+          Wireless Sensor Networks
+        </h3>
+        <div class="authors">
+          Nikhil Shekhawat, Balakiruthiga B, Angayarkanni SA, N Bathija,
+          S Shrimali, Neeharika G
+        </div>
+        <div class="venue">
+          IEEE/Second International Conference on Intelligent Cyber Physical
+          Systems and Internet of Things 2024
+        </div>
+        <p>
+          A novel approach for layered data aggregation in underwater acoustic
+          sensors, with improved transmission and optimized energy efficiency.
+        </p>
+      </div>
+
+      <div class="publication-item">
+        <h3>
+          AI-Driven Safety: Automated Helmet Detection and License Plate
+          Recognition
+        </h3>
+        <div class="authors">
+          Nikhil Shekhawat, Angayarkanni SA, N Bathija Saketh S, Rajaram V, Balakiruthiga
+          B
+        </div>
+        <div class="venue">
+          IEEE/9th International Conference on Communication and Electronics
+          Systems 2024
+        </div>
+        <p>
+          Implemented LSTM and GRU deep learning algorithms to capture
+          sequential patterns and long-term dependencies in traffic data for
+          improved forecasting accuracy
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Nikhil Singh.</p>
+      <p>Built with passion for Computer Science.</p>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
