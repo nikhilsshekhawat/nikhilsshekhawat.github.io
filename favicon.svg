@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#915eff"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#00cea8"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#00cea8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#050816"/>
+  <!-- faceted gem hexagon -->
+  <g transform="translate(32 32)">
+    <!-- top-left facet -->
+    <polygon points="0,-18 -15.6,-9 0,0" fill="url(#g1)"/>
+    <!-- top-right facet -->
+    <polygon points="0,-18 15.6,-9 0,0" fill="url(#g4)"/>
+    <!-- right facet -->
+    <polygon points="15.6,-9 15.6,9 0,0" fill="url(#g2)"/>
+    <!-- bottom-right facet -->
+    <polygon points="15.6,9 0,18 0,0" fill="url(#g3)"/>
+    <!-- bottom-left facet -->
+    <polygon points="0,18 -15.6,9 0,0" fill="url(#g1)"/>
+    <!-- left facet -->
+    <polygon points="-15.6,9 -15.6,-9 0,0" fill="url(#g3)"/>
+  </g>
+</svg>
